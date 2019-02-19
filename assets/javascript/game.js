@@ -23,14 +23,12 @@ document.onkeyup = function(event) {
 
     var wordLines = document.getElementById("unknown");
 
-    if (randomWordLength === 6) {
-        wordLines.textContent = "___ ___ ___ ___ ___ ___";
-    } else if (randomWordLength === 7) {
-        wordLines.textContent = "___ ___ ___ ___ ___ ___ ___";
-    } else {
-        wordLines.textContent = "___ ___ ___ ___ ___ ___ ___ ___";
+    var blanks = [];
+    for (var i = 0; i < randomWord.length; i++) {
+        blanks[i] = " ___ ";
     }
-
+    console.log(blanks);
+    wordLines.textContent = blanks.join(" ");
 
 //Play the game
 document.onkeyup = function(event) {
@@ -40,17 +38,18 @@ document.onkeyup = function(event) {
 
 var incorrectLetter = document.getElementById("incorrect");
 
-//for a letter that is pressed, if it is NOT one of the letters in the word, 
+//for a letter that is pressed, if matches one of the letters 
 
-//something is not right, the letter is not being checked among all the characters, only 1 character at random - "j"
+for (var j = 0; j < randomWordLength; j++) {
+    if (usersLetter === randomWord[j]) {
+//replace the blank line with the users input letter
+console.log("You have a match!");
+usersLetter = blanks[j];
 
-for (var j = 0; j <= randomWordLength; j++) {
-    if (usersLetter !== randomWord.charAt(j)) {
-//display the letter in the incorrect letter section
-        incorrectLetter.textContent = usersLetter + " is not in the word. Guess another letter!";
-        numGuesses--;
-} else if (usersLetter === randomWord.charAt(j)) {
-    alert("You guessed a correct letter!");
+//         incorrectLetter.textContent = usersLetter + " is not in the word. Guess another letter!";
+//         numGuesses--;
+//         alert("Now you have " + numGuesses " left!");
+// } else if (
 }
 }
     
