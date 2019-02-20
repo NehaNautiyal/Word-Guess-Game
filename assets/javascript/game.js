@@ -1,64 +1,97 @@
 
 //Define the array with words to choose from
 var chemWords = ["oxygen", "nitrogen", "carbon", "hydrogen", "helium", "sodium", "aluminum", "silver", "uranium", "copper"]
+var blanks = [];
+
 
 //Initial scores
 var wins = 0;
 var losses = 0;
-var numGuesses = 10;
+
+
 
 // Press any key to get started
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
 
-    //when a key is pressed, a random word from the array is chosen
-    var randomNumber = Math.floor(Math.random() * chemWords.length);
-    var randomWord = chemWords[randomNumber];
-    console.log(randomWord);
+    var refreshPage = function () {
 
-    //In order for the random chosen word to be displayed, need to know its length
-    var randomWordLength = randomWord.length;
-    console.log(randomWordLength);
+        var numGuesses = 10;
+        var wrongLetters = [];
+        var wrongLetter = document.getElementById("incorrect");
+        var rightLetter = document.getElementById("rightLetters");
+        var guessesLeft = document.getElementById("guessesRemaining");
 
-    //display the number of lines depending on the length of the word
+        wrongLetter.textContent = "Incorrect Guesses: " + wrongLetters.join(" ");
+        guessesLeft.textContent = numGuesses;
 
-    var wordLines = document.getElementById("unknown");
+        //when a key is pressed, a random word from the array is chosen
+        var randomNumber = Math.floor(Math.random() * chemWords.length);
+        var randomWord = chemWords[randomNumber];
+        console.log(randomWord);
 
-    var blanks = [];
-    for (var i = 0; i < randomWord.length; i++) {
-        blanks[i] = " ___ ";
+        //In order for the random chosen word to be displayed, need to know its length
+        var randomWordLength = randomWord.length;
+        console.log(randomWordLength);
+
+        //display the number of lines depending on the length of the word
+
+        var wordLines = document.getElementById("unknown");
+
+        for (var i = 0; i < randomWord.length; i++) {
+            blanks[i] = " ___ ";
+        }
+        console.log(blanks);
+        wordLines.textContent = blanks.join(" ");
+
+        //Play the game
+        document.onkeyup = function (event) {
+            var usersLetter = event.key;
+            console.log(usersLetter);
+
+            //evalute the letter being pressed to guess
+
+
+
+            //when a letter that is pressed, for the entirety of the word, check if it matches one of the letters 
+
+
+            var matchLetter = function (randomLetter) {
+                var letterMatch = false;
+
+
+                for (var j = 0; j < randomWordLength; j++) {
+                    // if the user's letter is in the random word at object from 0 to the length of the word,
+                    if (randomWord[j] === usersLetter) {
+                        letterMatch = true;
+                        console.log(letterMatch);
+                        blanks[j] = usersLetter;
+                        wordLines.textContent = blanks.join(" ");
+                    }
+                }
+
+                if (letterMatch === false) {
+                    // add that letter to an array called wrongLetters
+                    wrongLetters.push(usersLetter);
+                    console.log(wrongLetters);
+                    numGuesses--;
+                    guessesLeft.textContent = numGuesses;
+                    wrongLetter.textContent = "Incorrect Guesses: " + wrongLetters.join(" ");
+                }
+            }
+            matchLetter(usersLetter);
+
+            if (numGuesses === 1) {
+                alert("You have 1 guess left. Choose carefully!")
+            }
+
+            var numLosses = document.getElementById("losses");
+
+            if (numGuesses === 0) {
+                losses++;
+                numLosses.textContent = losses;
+                refreshPage();
+            }
+        }
     }
-    console.log(blanks);
-    wordLines.textContent = blanks.join(" ");
-
-//Play the game
-document.onkeyup = function(event) {
-    var usersLetter = event.key;
-
-//evalute the letter being pressed to guess
-
-var incorrectLetter = document.getElementById("incorrect");
-
-//for a letter that is pressed, if matches one of the letters 
-
-for (var j = 0; j < randomWordLength; j++) {
-    if (usersLetter === randomWord[j]) {
-//replace the blank line with the users input letter
-console.log("You have a match!");
-usersLetter = blanks[j];
-
-//         incorrectLetter.textContent = usersLetter + " is not in the word. Guess another letter!";
-//         numGuesses--;
-//         alert("Now you have " + numGuesses " left!");
-// } else if (
+    refreshPage();
 }
-}
-    
-    
-}
-}
-    
-
-    
-    
-    
-
