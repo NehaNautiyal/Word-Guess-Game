@@ -4,27 +4,61 @@ body {
     background-image: url("../images/chemistry-background.jpg")
 }
 
+/* .navbar { 
+    background: #436DC1;
+    font-family: 'Viga', sans-serif;
+    text-align: center;
+    color: white;
+} */
+
 h1 {
     color: blue;
     text-align: center;
-    /* font-family: 'Viga', sans-serif; */
     font-size: 40px;
     padding: 5px;
-    /* background: whitesmoke; */
 }
 
 p, h3 {
     color: gray;
     font-size: 26px;
     text-align: center;
-    /* font-family: 'Viga', sans-serif; */
+}
+
+img {
+    align-content: center;
 }
 
 .container {
     background: whitesmoke;
-    padding: 15px;
-    margin-left: 350px;
-    margin-right: 350px;
+    width: 50%;
+    margin: 0 auto;
     border: 2px solid black;
     font-family: 'Viga', sans-serif;
 }
+
+@media screen and (max-width: 980px) {
+
+    .container {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+  
+  
+    .container {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+  
+  @media screen and (max-width: 640px) {
+    .container {
+      width: 80%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  
+  
+  }
