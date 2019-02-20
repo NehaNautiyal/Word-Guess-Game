@@ -24,8 +24,10 @@ p, h3 {
     text-align: center;
 }
 
-img {
-    align-content: center;
+#image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container {
@@ -38,23 +40,24 @@ img {
 
 @media screen and (max-width: 980px) {
 
-    .container {
+    #image, .container {
       width: 50%;
       margin: 0 auto;
     }
+
   }
   
   @media screen and (max-width: 768px) {
   
   
-    .container {
+    #image, .container {
       width: 50%;
       margin: 0 auto;
     }
   }
   
   @media screen and (max-width: 640px) {
-    .container {
+    #image, .container {
       width: 80%;
       text-align: center;
       margin: 0 auto;

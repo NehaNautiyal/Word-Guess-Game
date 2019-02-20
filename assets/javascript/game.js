@@ -9,47 +9,8 @@ var chemWords = ["oxygen", "nitrogen", "carbon", "hydrogen", "helium", "sodium",
 var wins = 0;
 var losses = 0;
 
-var randomNumber = Math.floor(Math.random() * chemWords.length);
-var randomWord = chemWords[randomNumber];
 
-var showImage = function() {
 
-    var imageDetails = document.getElementById("image");
-
-    if (randomWord === chemWords[0]) {
-        imageDetails.setAttribute("src", "assets/images/oxygen.JPG");
-    } else if (randomWord === chemWords[1]) {
-        imageDetails.setAttribute("src", "assets/images/nitrogen.JPG");
-    } else if (randomWord === chemWords[2]) {
-        imageDetails.setAttribute("src", "assets/images/carbon.JPG");
-    } else if (randomWord === chemWords[3]) {
-        imageDetails.setAttribute("src", "assets/images/hydrogen.JPG");
-    } else if (randomWord === chemWords[4]) {
-        imageDetails.setAttribute("src", "assets/images/helium.JPG");
-    } else if (randomWord === chemWords[5]) {
-        imageDetails.setAttribute("src", "assets/images/sodium.JPG");
-    } else if (randomWord === chemWords[6]) {
-        imageDetails.setAttribute("src", "assets/images/aluminum.JPG");
-    } else if (randomWord === chemWords[7]) {
-        imageDetails.setAttribute("src", "assets/images/silver.JPG");
-    } else if (randomWord === chemWords[8]) {
-        imageDetails.setAttribute("src", "assets/images/uranium.JPG");
-    } else if (randomWord === chemWords[9]) {
-        imageDetails.setAttribute("src", "assets/images/copper.JPG");
-    } else if (randomWord === chemWords[10]) {
-        imageDetails.setAttribute("src", "assets/images/potassium.JPG");
-    } else if (randomWord === chemWords[11]) {
-        imageDetails.setAttribute("src", "assets/images/sulfur.JPG");
-    } else if (randomWord === chemWords[12]) {
-        imageDetails.setAttribute("src", "assets/images/krypton.JPG");
-    } else if (randomWord === chemWords[13]) {
-        imageDetails.setAttribute("src", "assets/images/radon.JPG");
-    } else if (randomWord === chemWords[14]) {
-        imageDetails.setAttribute("src", "../images/iron.JPG");
-    } else if (randomWord === chemWords[15]) {
-        imageDetails.setAttribute("src", "../images/gold.JPG");
-    }
-}
 
 
 
@@ -65,11 +26,18 @@ document.onkeyup = function (event) {
         // var rightLetter = document.getElementById("rightLetters");
         var guessesLeft = document.getElementById("guessesRemaining");
 
+
+        // var imageDetails = document.getElementById("image");
+
+        // imageDetails.setAttribute("src", "assets/images/question-mark.png");
+        // imageDetails.setAttribute("height", "200px");
+        // imageDetails.setAttribute("width", "300px");
         wrongLetter.textContent = "Incorrect Guesses: " + wrongLetters.join(" ");
         guessesLeft.textContent = numGuesses;
 
         //when a key is pressed, a random word from the array is chosen
-       
+        var randomNumber = Math.floor(Math.random() * chemWords.length);
+        var randomWord = chemWords[randomNumber];
         console.log(randomWord);
 
         //In order for the random chosen word to be displayed, need to know its length
@@ -143,6 +111,55 @@ document.onkeyup = function (event) {
 
             console.log("This is blanks array: " + blanks);
             console.log("This is wordLines array: " + wordLines);
+
+
+            var showImage = function () {
+
+                var imageDetails = document.getElementById("image");
+
+                if (randomWord === chemWords[0]) {
+                    imageDetails.setAttribute("src", "assets/images/oxygen.JPG");
+                } else if (randomWord === chemWords[1]) {
+                    imageDetails.setAttribute("src", "assets/images/nitrogen.JPG");
+                } else if (randomWord === chemWords[2]) {
+                    imageDetails.setAttribute("src", "assets/images/carbon.JPG");
+                } else if (randomWord === chemWords[3]) {
+                    imageDetails.setAttribute("src", "assets/images/hydrogen.JPG");
+                } else if (randomWord === chemWords[4]) {
+                    imageDetails.setAttribute("src", "assets/images/helium.JPG");
+                } else if (randomWord === chemWords[5]) {
+                    imageDetails.setAttribute("src", "assets/images/sodium.JPG");
+                } else if (randomWord === chemWords[6]) {
+                    imageDetails.setAttribute("src", "assets/images/aluminum.JPG");
+                } else if (randomWord === chemWords[7]) {
+                    imageDetails.setAttribute("src", "assets/images/silver.JPG");
+                } else if (randomWord === chemWords[8]) {
+                    imageDetails.setAttribute("src", "assets/images/uranium.JPG");
+                } else if (randomWord === chemWords[9]) {
+                    imageDetails.setAttribute("src", "assets/images/copper.JPG");
+                } else if (randomWord === chemWords[10]) {
+                    imageDetails.setAttribute("src", "assets/images/potassium.JPG");
+                } else if (randomWord === chemWords[11]) {
+                    imageDetails.setAttribute("src", "assets/images/sulfur.JPG");
+                } else if (randomWord === chemWords[12]) {
+                    imageDetails.setAttribute("src", "assets/images/krypton.JPG");
+                } else if (randomWord === chemWords[13]) {
+                    imageDetails.setAttribute("src", "assets/images/radon.JPG");
+                } else if (randomWord === chemWords[14]) {
+                    imageDetails.setAttribute("src", "assets/images/iron.JPG");
+                } else if (randomWord === chemWords[15]) {
+                    imageDetails.setAttribute("src", "assets/images/gold.JPG");
+                }
+                else {
+                    imageDetails.setAttribute("src", "assets/images/question-mark.png");
+                    imageDetails.setAttribute("height", "200px");
+                    imageDetails.setAttribute("width", "300px");
+
+                }
+            }
+
+
+
 
 
             if (blanks.includes(" ___ ") === false) {
