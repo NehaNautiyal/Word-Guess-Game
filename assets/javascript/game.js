@@ -1,6 +1,7 @@
 
 //Define the array with words to choose from
-var chemWords = ["oxygen", "nitrogen", "carbon", "hydrogen", "helium", "sodium", "aluminum", "silver", "uranium", "copper"]
+var chemWords = ["oxygen", "nitrogen", "carbon", "hydrogen", "helium", "sodium", "aluminum", "silver", "uranium", "copper",
+"potassium", "sulfur", "krypton", "radon", "iron", "gold"]
 var blanks = [];
 
 
@@ -89,6 +90,19 @@ document.onkeyup = function (event) {
             if (numGuesses === 0) {
                 losses++;
                 numLosses.textContent = losses;
+                refreshPage();
+            }
+
+            var numWins = document.getElementById("wins");    
+
+            
+            console.log("This is blanks array: " + blanks);
+            console.log("This is wordLines array: " + wordLines);
+            
+            if (blanks.includes(" ___ ") === false) {
+                wins++;
+                numWins.textContent = wins;
+                alert("Congratulations! You guessed " + randomWord + " correctly! Press OK to play again.");
                 refreshPage();
             }
         }
