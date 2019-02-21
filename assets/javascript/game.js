@@ -3,16 +3,9 @@
 var chemWords = ["oxygen", "nitrogen", "carbon", "hydrogen", "helium", "sodium", "aluminum", "silver", "uranium", "copper",
     "potassium", "sulfur", "krypton", "radon", "iron", "gold"]
 
-
-
 //Initial scores
 var wins = 0;
 var losses = 0;
-
-
-
-
-
 
 // Press any key to get started
 document.onkeyup = function (event) {
@@ -26,7 +19,7 @@ document.onkeyup = function (event) {
         var guessesLeft = document.getElementById("guessesRemaining");
 
 
-
+        // Update the content to remove all incorrect guesses & restart to 10 guesses
         wrongLetter.textContent = "Incorrect Guesses: " + wrongLetters.join(" ");
         guessesLeft.textContent = numGuesses;
 
@@ -40,39 +33,38 @@ document.onkeyup = function (event) {
         console.log(randomWordLength);
 
         //display the number of lines depending on the length of the word
-
         var wordLines = document.getElementById("unknown");
 
         for (var i = 0; i < randomWord.length; i++) {
             blanks[i] = " ___ ";
         }
         console.log(blanks);
+
+        //display the number of lines that matches the length of the random word on the screen
         wordLines.textContent = blanks.join(" ");
 
         //Play the game
+        //----------------------------------------------------
+
+        //Upon pressing any key
         document.onkeyup = function uniKeyCode(event) {
 
             var x = event.keyCode;
 
-
+            //that key is evaluated to be an alpha key, otherwise an alert is shown to pick another key
             if (x > 90 || x < 57) {
-                alert("You pressed an incorrect key. Please choose 1 letter from a to z.");
+                alert("You pressed an incorrect key. Please choose a letter from a to z.");
             } else {
 
                 var usersLetter = event.key.toLowerCase();
                 console.log(usersLetter);
 
-                //evalute the letter being pressed to guess
-
-
 
                 //when a letter that is pressed, for the entirety of the word, check if it matches one of the letters 
-
-
                 var matchLetter = function (randomLetter) {
                     var letterMatch = false;
 
-
+                    // for every letter in the word
                     for (var j = 0; j < randomWordLength; j++) {
                         // if the user's letter is in the random word at object from 0 to the length of the word,
                         if (randomWord[j] === usersLetter) {
@@ -86,13 +78,17 @@ document.onkeyup = function (event) {
                     }
 
                     if (letterMatch === false) {
-                        // add that letter to an array called wrongLetters
-                        wrongLetters.push(usersLetter);
-                        console.log(wrongLetters);
-                        //number of guesses goes down by 1
-                        numGuesses--;
-                        guessesLeft.textContent = numGuesses;
-                        wrongLetter.textContent = "Incorrect Guesses: " + wrongLetters.join(" ");
+                        // add that letter to an array called wrongLetters, ONLY IF IT DOESN'T ALREADY APPEAR in the wrongLetters Array
+                        if (wrongLetters.includes(usersLetter)) {
+                            
+                        } else {
+                            wrongLetters.push(usersLetter);
+                            console.log(wrongLetters);
+                            //number of guesses goes down by 1
+                            numGuesses--;
+                            guessesLeft.textContent = numGuesses;
+                            wrongLetter.textContent = "Incorrect Guesses: " + wrongLetters.join(" ");
+                        }
                     }
                 }
                 matchLetter(usersLetter);
@@ -187,7 +183,3 @@ document.onkeyup = function (event) {
     }
     refreshPage();
 }
-
-
-//var audio = new Audio('audio_file.mp3');
-//audio.play()
