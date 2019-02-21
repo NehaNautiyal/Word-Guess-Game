@@ -24,7 +24,7 @@ p, h3 {
     text-align: center;
 }
 
-#image {
+#image, .btn {
     display: block;
     margin-left: auto;
     margin-right: auto;
