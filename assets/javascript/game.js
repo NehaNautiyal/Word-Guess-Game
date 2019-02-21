@@ -17,11 +17,18 @@ document.onkeyup = function (event) {
         var blanks = [];
         var wrongLetter = document.getElementById("incorrect");
         var guessesLeft = document.getElementById("guessesRemaining");
+        var imageDetails = document.getElementById("image");
 
 
-        // Update the content to remove all incorrect guesses & restart to 10 guesses
+        // Update the content to remove all incorrect guesses, restart to 10 guesses, & remove the image
         wrongLetter.textContent = "Incorrect Guesses: " + wrongLetters.join(" ");
         guessesLeft.textContent = numGuesses;
+        setTimeout(function () {
+            imageDetails.setAttribute("src", "");
+            // imageDetails.setAttribute("src", "assets/images/question-mark.png");
+            // imageDetails.setAttribute("height", "400px");
+            // imageDetails.setAttribute("width", "300px");
+        }, 2000);                        
 
         //when a key is pressed, a random word from the array is chosen
         var randomNumber = Math.floor(Math.random() * chemWords.length);
@@ -120,7 +127,7 @@ document.onkeyup = function (event) {
 
                 var showImage = function () {
 
-                    var imageDetails = document.getElementById("image");
+                    
 
                     if (randomWord === chemWords[0]) {
                         imageDetails.setAttribute("src", "assets/images/oxygen.JPG");
@@ -154,12 +161,6 @@ document.onkeyup = function (event) {
                         imageDetails.setAttribute("src", "assets/images/iron.JPG");
                     } else if (randomWord === chemWords[15]) {
                         imageDetails.setAttribute("src", "assets/images/gold.JPG");
-                    }
-                    else {
-                        imageDetails.setAttribute("src", "assets/images/question-mark.png");
-                        imageDetails.setAttribute("height", "200px");
-                        imageDetails.setAttribute("width", "300px");
-
                     }
                 }
 
