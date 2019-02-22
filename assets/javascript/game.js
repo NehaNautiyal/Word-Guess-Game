@@ -40,7 +40,6 @@ $(function () {
             console.log(randomWord);
 
             //In order for the random chosen word to be displayed, need to know its length
-            // var randomWordLength = randomWord.length;
             console.log(randomWord.length);
 
             //display the number of lines depending on the length of the word
@@ -124,14 +123,7 @@ $(function () {
 
                     var numWins = document.getElementById("wins");
 
-
-                    console.log("This is blanks array: " + blanks);
-                    console.log("This is wordLines array: " + wordLines);
-
-
                     var showImage = function () {
-
-
 
                         if (randomWord === chemWords[0]) {
                             imageDetails.setAttribute("src", "assets/images/oxygen.JPG");
@@ -167,10 +159,6 @@ $(function () {
                             imageDetails.setAttribute("src", "assets/images/gold.JPG");
                         }
                     }
-
-
-
-
 
                     if (blanks.includes(" ___ ") === false) {
                         applause.play();
