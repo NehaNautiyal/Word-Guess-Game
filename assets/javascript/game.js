@@ -7,11 +7,18 @@ $(function () {
         carbon: "Electron configuration ends in 2p2",
     
 }
+
+$("#hint").on("click", function () {
+    if (!wordChosen) {
+        alert("Press a key first.");
+    } else {
+    alert("Currently working on the hints. Check back soon. Look at a Periodic Table to help you!");
+    // alert("hints." + randomWord);
+    }
+});
+
+var wordChosen = false;
     
-
-    // console.log(hints..hint);
-
-
 //Define the array with words to choose from
 var chemWords = ["oxygen", "nitrogen", "carbon", "hydrogen", "helium", "sodium", "aluminum", "silver", "uranium", "copper",
     "potassium", "sulfur", "krypton", "radon", "iron", "gold"]
@@ -22,6 +29,7 @@ var losses = 0;
 
 // Press any key to get started
 document.onkeyup = function (event) {
+    wordChosen = true;
 
     var refreshPage = function () {
 
@@ -45,23 +53,14 @@ document.onkeyup = function (event) {
 
         //when a key is pressed, a random word from the array is chosen
         var randomWord = chemWords[Math.floor(Math.random() * chemWords.length)];
-        console.log(randomWord);
-
-        $("#hint").on("click", function () {
-            alert("Currently working on the hints");
-            // alert("hints." + randomWord);
-        });
 
         //In order for the random chosen word to be displayed, need to know its length
-        console.log(randomWord.length);
-
         //display the number of lines depending on the length of the word
         var wordLines = document.getElementById("unknown");
 
         for (var i = 0; i < randomWord.length; i++) {
             blanks[i] = " ___ ";
         }
-        console.log(blanks);
 
         //display the number of lines that matches the length of the random word on the screen
         wordLines.textContent = blanks.join(" ");
